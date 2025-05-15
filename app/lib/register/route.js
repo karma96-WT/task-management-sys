@@ -1,4 +1,4 @@
-import {prisma} from '../prisma';
+import {prisma} from '../prisma/route';
 import { NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
 

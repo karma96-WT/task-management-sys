@@ -5,10 +5,16 @@ import { useRouter } from 'next/navigation';
 export default function LogoutPage() {
   const router = useRouter();
 
-  useEffect(() => {
-    localStorage.removeItem('token');
+  const handleLogout = async () => {
+    await fetch('/api/logout', {
+      method: 'POST',
+    });
+  
     router.push('/login');
-  }, [router]);
-
-  return <p>Logging out...</p>;
+}
+  return (
+    <button onClick={handleLogout} className="px-4 py-2 bg-red-600 text-white rounded">
+      Logout
+    </button>
+  );
 }

@@ -1,0 +1,34 @@
+.body{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: aquamarine;
+    padding: 20px;
+}
+.user-list{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 20px;
+    border: 2px solid palevioletred;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px 0;
+}
+.delete-button{
+    border: 1px solid black;
+    padding: 0 10px;
+    border-radius: 10px;
+    background-color: red;
+}
+.logout-button{
+    border: 2px solid black;
+    padding: 0 10px;
+    border-radius: 10px;
+    background-color: rgb(18, 152, 193);
+    color: aliceblue;
+}

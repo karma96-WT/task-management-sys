@@ -1,4 +1,4 @@
-import { prisma } from '../../lib/prisma';
+import { prisma } from '../../lib/prisma/route';
 import { NextResponse } from 'next/server';
 import { verifyToken } from '../../lib/auth';
 
@@ -20,12 +20,13 @@ export async function POST(req) {
   try {
     const decoded = verifyToken(token);
     const data = await req.json();
+    console.log('task data:',data);
     const task = await prisma.task.create({
       data: {
         title: data.title,
         description: data.description,
         dueDate: data.dueDate ? new Date(data.dueDate) : undefined,
-        priority: data.priority || 'medium',
+        status: data.priority || 'medium',
         userId: decoded.id,
       },
     });

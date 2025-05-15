@@ -1,6 +1,6 @@
-import { prisma } from '/lib/prisma';
+import { prisma } from '../../../lib/prisma/route';
 import { NextResponse } from 'next/server';
-import { verifyToken } from '@/lib/auth';
+import { verifyToken } from '../../../lib/auth';
 
 export async function PUT(req, { params }) {
   const token = req.headers.get('authorization')?.split(' ')[1];
@@ -19,8 +19,7 @@ export async function PUT(req, { params }) {
         title: data.title,
         description: data.description,
         dueDate: data.dueDate ? new Date(data.dueDate) : undefined,
-        status: data.status,
-        priority: data.priority,
+        status: data.priority,
       },
     });
     return NextResponse.json(updated);
@@ -34,7 +33,7 @@ export async function DELETE(req, { params }) {
   if (!token) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   try {
     const decoded = verifyToken(token);
-    const taskId = parseInt(params.id);
+    const taskId =  parseInt(params.id);
     const task = await prisma.task.findUnique({ where: { id: taskId } });
     if (task?.userId !== decoded.id) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });

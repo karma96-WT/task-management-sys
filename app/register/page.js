@@ -20,14 +20,14 @@ export default function RegisterPage() {
   };
 
   return (
-    <div>
+    <div className='body'>
       <h1>Register</h1>
       {error && <p>{error}</p>}
-      <input placeholder="Name" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} />
-      <input placeholder="Username" value={form.username} onChange={e => setForm({ ...form, username: e.target.value })} />
-      <input placeholder="Email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
-      <input placeholder="Password" type="password" value={form.password} onChange={e => setForm({ ...form, password: e.target.value })} />
-      <button onClick={handleRegister}>Register</button>
+      <input placeholder="Name" className='inputs' value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} />
+      <input placeholder="Username" className='inputs' value={form.username} onChange={e => setForm({ ...form, username: e.target.value })} />
+      <input placeholder="Email" className='inputs' value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
+      <input placeholder="Password" className='inputs' type="password" value={form.password} onChange={e => setForm({ ...form, password: e.target.value })} />
+      <button onClick={handleRegister} className='register'>Register</button>
     </div>
   );
 }

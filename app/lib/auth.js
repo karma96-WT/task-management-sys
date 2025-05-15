@@ -1,8 +1,19 @@
 import jwt from 'jsonwebtoken';
-const SECRET = 'secret-key';
+const SECRET = process.env.SECRET_KEY;
 export function generateToken(user) {
-    return jwt.sign(user,SECRET,{expiresIn:'1h'});
+    const payload = {
+        id: user.id,
+        email: user.email,
+        role: user.role,
+    };
+    return jwt.sign(payload,SECRET,{expiresIn:'1h'});
 }
 export function verifyToken(token){
-    return jwt.verify(token,SECRET);
+    try{
+        return jwt.verify(token,SECRET);
+    }
+    catch (err){
+        console.log("invaild or expired token");
+        return null;
+    }
 }

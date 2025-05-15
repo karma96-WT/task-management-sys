@@ -1,0 +1,60 @@
+.top-div{
+    width: 100%;
+    background-color: antiquewhite;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+.heading{
+    font-size: xx-large;
+    color: rgb(48, 182, 206);
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.title{
+    background-color: aqua;
+    padding: 10px;
+    border-radius: 20px;
+    color: black;
+}
+.created-tasks{
+    background-color: pink;
+    padding: 10px;
+    border-radius: 20px;
+}
+.Delete-button{
+    background-color: red;
+    padding: 10px;
+    border-radius: 10px;
+}
+.Update-button{
+    background-color: rgb(18, 115, 122);
+    padding: 10px;
+    border-radius: 10px;
+}
+.tasks-list{
+    border: 2px solid palevioletred;
+    padding: 20px;
+    border-radius: 20px;
+    margin: 20px;
+}
+.task-list-contanier{
+    display: flex;
+    flex-wrap: wrap;
+}
+.buttons{
+    display: flex;
+    justify-content: space-around;
+}
+.logout-button{
+    background-color: aqua;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: x-large;
+}
