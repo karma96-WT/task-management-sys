@@ -1,6 +1,6 @@
-import { prisma } from '../../lib/prisma/route';
+import { prisma } from '@/lib/prisma/route';
 import { NextResponse } from 'next/server';
-import { verifyToken } from '../../lib/auth';
+import { verifyToken } from '@/lib/auth';
 
 export async function GET(req) {
   const token = req.headers.get('authorization')?.split(' ')[1];
