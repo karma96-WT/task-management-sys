@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
-import { prisma } from '@/app/lib/prisma'; // update path as needed
+import  prisma  from '@/lib/prisma/route'; // update path as needed
 import bcrypt from 'bcryptjs';
-import { generateToken } from '@/lib/auth'; // update path as needed
+import {generateToken}  from '@/lib/auth'; // update path as needed
 import { getIronSession } from 'iron-session';
 import { sessionOptions } from '@/lib/session/session.js';
 import { cookies } from 'next/headers';
