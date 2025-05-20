@@ -1,14 +1,16 @@
-import { prisma } from '@/app/lib/prisma/route';
+import { prisma } from '@/app/lib/prisma/client';
 import { NextResponse } from 'next/server';
 import { verifyToken } from '@/lib/auth';
 
-export async function PUT(req, { params }) {
+export async function PUT(req, { params }){
   const token = req.headers.get('authorization')?.split(' ')[1];
   if (!token) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   try {
     const decoded = verifyToken(token);
     const data = await req.json();
-    const taskId = parseInt(params.id);
+
+    const awaitedParams = await params;          // <--- Await here too
+    const taskId = parseInt(awaitedParams.id);
     const task = await prisma.task.findUnique({ where: { id: taskId } });
     if (task?.userId !== decoded.id) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
@@ -33,7 +35,8 @@ export async function DELETE(req, { params }) {
   if (!token) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   try {
     const decoded = verifyToken(token);
-    const taskId =  parseInt(params.id);
+    const awaitedParams = await params;          // <--- Await here too
+    const taskId = parseInt(awaitedParams.id);
     const task = await prisma.task.findUnique({ where: { id: taskId } });
     if (task?.userId !== decoded.id) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
