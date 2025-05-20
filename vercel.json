@@ -1,8 +1,11 @@
 {
   "rewrites": [{ "source": "/(.*)", "destination": "/" }],
   "functions": {
-    "api/**/*.js": {
-      "includeFiles": "prisma/schema.prisma"
+    "app/api/**/*.js": {
+      "includeFiles": [
+        "prisma/schema.prisma",
+        "node_modules/.prisma/client/**"
+      ]
     }
   }
 }
